@@ -53,12 +53,13 @@ fs.readFile('data.csv', function(err, data) {
       return false;
     }
 
-    var features = data[0].slice(1,-1);
+    var headers = data[0];
+    var features = headers.slice(1,-1); // ["attr1", "attr2", "attr3"]
     var featureTypes = ['category','number','cateogry'];
     var trainingData = data.slice(1).map(function(d) {
       return d.slice(1);
     });
-    var target = 'class';
+    var target = headers[headers.length-1]; // "class"
     var c45 = C45();
 
     c45.train({
