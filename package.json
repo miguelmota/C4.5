@@ -1,0 +1,46 @@
+{
+  "name": "C4.5",
+  "version": "0.0.1",
+  "description": "C4.5 decision tree generation algorithm in JavaScript.",
+  "main": "C45.js",
+  "directories": {
+    "test": "test"
+  },
+  "files": [
+    "C45.js"
+  ],
+  "scripts": {
+    "test": "./node_modules/tape/bin/tape test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/miguelmota/C4.5"
+  },
+  "keywords": [
+    "C4.5",
+    "decision tree",
+    "algorithm",
+    "classifier",
+    "machine learning"
+  ],
+  "author": {
+    "name": "Miguel Mota",
+    "email": "hello@miguelmota.com",
+    "url": "http://www.miguelmota.com/"
+  },
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/miguelmota/C4.5/blob/master/LICENSE.md"
+  },
+  "bugs": {
+    "url": "https://github.com/miguelmota/C4.5/issues"
+  },
+  "homepage": "https://github.com/miguelmota/C4.5",
+  "devDependencies": {
+    "csv": "^0.4.2",
+    "tape": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

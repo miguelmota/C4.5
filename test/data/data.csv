@@ -1,0 +1,15 @@
+id,attr1,attr2,attr3,class
+1,A,70,True,CLASS1
+2,A,90,True,CLASS2
+3,A,85,False,CLASS2
+4,A,95,False,CLASS2
+5,A,70,False,CLASS1
+6,B,90,True,CLASS1
+7,B,78,False,CLASS1
+8,B,65,True,CLASS1
+9,B,75,False,CLASS1
+10,C,80,True,CLASS2
+11,C,70,True,CLASS2
+12,C,80,False,CLASS1
+13,C,80,False,CLASS1
+14,C,96,False,CLASS1
