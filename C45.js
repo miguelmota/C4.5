@@ -1,5 +1,3 @@
-var _ = require('lodash');
-
 (function(root) {
   'use strict';
 
@@ -14,6 +12,7 @@ var _ = require('lodash');
     }
     return a;
   }
+
   function find(col, pred) {
     var value;
     col.forEach(function(item) {
@@ -53,10 +52,14 @@ var _ = require('lodash');
 
   C45.prototype = {
     /**
-     * @param {object} data - JSON data
-     * @param {string} target - class label (ie Yes, No column name)
-     * @param {string} featureTypes - features type (ie category, number)
-     * @param {function} callback - callback fn(error, model)
+     * train
+     *
+     * @param {object} options
+     * @param {array} options.data - training data
+     * @param {string} options.target - class label
+     * @param {array} options.features - features names
+     * @param {array} options.featureTypes - features type (ie 'category', 'number')
+     * @param {function} callback - callback, containing error and model as parameters
      */
     train: function(options, callback) {
       var data = options.data;

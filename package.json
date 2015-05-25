@@ -1,6 +1,6 @@
 {
   "name": "c4.5",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "C4.5 decision tree generation algorithm in JavaScript.",
   "main": "C45.js",
   "directories": {

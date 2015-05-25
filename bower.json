@@ -1,7 +1,7 @@
 {
   "name": "c4.5",
   "main": "C45.js",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/miguelmota/C4.5",
   "authors": [
     "Miguel Mota <miguelmota2@gmail.com>"
