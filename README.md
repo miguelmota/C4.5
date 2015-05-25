@@ -2,16 +2,16 @@
 
 > [C4.5](https://en.wikipedia.org/wiki/C4.5_algorithm) decision tree generation algorithm in JavaScript.
 
-[![NPM](https://nodei.co/npm/C4.5.png)](https://nodei.co/npm/C4.5)
+[![NPM](https://nodei.co/npm/c4.5.png)](https://nodei.co/npm/c4.5)
 
 # Install
 
 ```bash
-npm install C4.5
+npm install c4.5
 ```
 
 ```bash
-bower install C4.5
+bower install c4.5
 ```
 
 # Usage
@@ -39,7 +39,7 @@ id,attr1,attr2,attr3,class
 ```javascript
 var fs = require('fs');
 var csv = require('csv');
-var C45 = require('C4.5');
+var C45 = require('c4.5');
 
 fs.readFile('data.csv', function(err, data) {
   if (err) {
