@@ -44,38 +44,43 @@ var C45 = require('C4.5');
 fs.readFile('data.csv', function(err, data) {
   if (err) {
     console.error(err);
-  } else {
-    csv.parse(data, function(err, data) {
-      var features = data[0].slice(1,-1);
-      var featureTypes = ['category','number','cateogry'];
-      var trainingData = data.slice(1).map(function(d) {
-        return d.slice(1);
-      });
-      var target = 'class';
-
-      var c45 = C45();
-
-      c45.train({
-          data: trainingData,
-          target: target,
-          features: features,
-          featureTypes: featureTypes
-        }, function(error, model) {
-          if (error) {
-            console.error(error);
-          } else {
-            var testData = [
-              ['B',71,'False'],
-              ['C',70,'True'],
-            ];
-
-            console.assert(model.classify(testData[0]) ===  'CLASS1');
-            console.assert(model.classify(testData[1]) ===  'CLASS2');
-          }
-        }
-      });
-    });
+    return false;
   }
+
+  csv.parse(data, function(err, data) {
+    if (err) {
+      console.error(err);
+      return false;
+    }
+
+    var features = data[0].slice(1,-1);
+    var featureTypes = ['category','number','cateogry'];
+    var trainingData = data.slice(1).map(function(d) {
+      return d.slice(1);
+    });
+    var target = 'class';
+    var c45 = C45();
+
+    c45.train({
+        data: trainingData,
+        target: target,
+        features: features,
+        featureTypes: featureTypes
+    }, function(error, model) {
+      if (error) {
+        console.error(error);
+        return false;
+      }
+
+      var testData = [
+        ['B',71,'False'],
+        ['C',70,'True'],
+      ];
+
+      console.assert(model.classify(testData[0]) ===  'CLASS1');
+      console.assert(model.classify(testData[1]) ===  'CLASS2');
+    });
+  });
 });
 ```
 
