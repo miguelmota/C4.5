@@ -55,7 +55,7 @@ fs.readFile('data.csv', function(err, data) {
 
     var headers = data[0];
     var features = headers.slice(1,-1); // ["attr1", "attr2", "attr3"]
-    var featureTypes = ['category','number','cateogry'];
+    var featureTypes = ['category','number','category'];
     var trainingData = data.slice(1).map(function(d) {
       return d.slice(1);
     });
@@ -78,8 +78,8 @@ fs.readFile('data.csv', function(err, data) {
         ['C',70,'True'],
       ];
 
-      console.assert(model.classify(testData[0]) ===  'CLASS1');
-      console.assert(model.classify(testData[1]) ===  'CLASS2');
+      console.log(model.classify(testData[0]) ===  'CLASS1'); // true
+      console.log(model.classify(testData[1]) ===  'CLASS2'); // true
     });
   });
 });
