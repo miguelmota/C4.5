@@ -78,8 +78,8 @@ fs.readFile('data.csv', function(err, data) {
         ['C',70,'True'],
       ];
 
-      console.log(model.classify(testData[0]) ===  'CLASS1'); // true
-      console.log(model.classify(testData[1]) ===  'CLASS2'); // true
+      console.log(model.classify(testData[0]) === 'CLASS1'); // true
+      console.log(model.classify(testData[1]) === 'CLASS2'); // true
     });
   });
 });
