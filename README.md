@@ -1,5 +1,7 @@
 # C4.5
 
+*Note: This is a fork of [learningjs](https://github.com/yandongliu/learningjs).*
+
 > [C4.5](https://en.wikipedia.org/wiki/C4.5_algorithm) decision tree generation algorithm in JavaScript.
 
 [![NPM](https://nodei.co/npm/c4.5.png)](https://nodei.co/npm/c4.5)
