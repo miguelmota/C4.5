@@ -48,6 +48,8 @@
     }
     this.features = [];
     this.targets = [];
+    this.model = {}
+    this.target = ''
   }
 
   C45.prototype = {
@@ -79,6 +81,9 @@
       }));
       this.features = features;
       this.targets = targets;
+      this.target = target
+
+      var classify = this.classify.bind(this)
 
       var model = {
         features: this.features,
@@ -86,48 +91,35 @@
 
         // model is the generated tree structure
         model: this._c45(data, target, features, featureTypes, 0),
-        classify: function classify(sample) {
-          // root is feature (attribute) containing all sub values
-          var root = this.model;
 
-          if (typeof root === 'undefined') {
-            callback(new Error('model is undefined'));
-          }
+        classify: function (sample) {
+          return classify(this.model, sample)
+        },
 
-          while (root.type !== 'result') {
-            var childNode;
-
-            if (root.type === 'feature_number') {
-              var featureName = root.name;
-              var sampleVal = parseFloat(sample[featureName]);
-
-              if (sampleVal <= root.cut) {
-                childNode = root.values[1];
-              } else {
-                childNode = root.values[0];
-              }
-            } else {
-              // feature syn attribute
-              var feature = root.name;
-              var sampleValue = sample[this.features.indexOf(feature)];
-
-              // sub value , containing 2 childs
-              childNode = find(root.values, function(x) {
-                return x.name === sampleValue;
-              });
-            }
-
-            // non trained feature
-            if (typeof childNode === 'undefined') {
-              return 'unknown';
-            }
-            root = childNode.child;
-          }
-          return root.value;
+        toJSON: function() {
+          return JSON.stringify(this.model)
         }
       };
 
+      this.model = model.model
+
       callback(null, model);
+    },
+
+    getModel: function() {
+      var classify = this.classify.bind(this)
+      var model = this.model
+
+      return {
+        features: this.features,
+        targets: this.targets,
+        classify: function (sample) {
+          return classify(model, sample)
+        },
+        toJSON: function() {
+          return JSON.stringify(this.model)
+        }
+      }
     },
 
     _c45: function(data, target, features, featureTypes, depth) {
@@ -325,6 +317,62 @@
 
     log2: function(n) {
       return Math.log(n) / Math.log(2);
+    },
+
+    toJSON: function() {
+      return JSON.stringify({
+        features: this.features,
+        targets: this.targets,
+        target: this.target,
+        model: this.model,
+      })
+    },
+
+    classify: function classify(model, sample) {
+      // root is feature (attribute) containing all sub values
+      var root = model;
+
+      if (typeof root === 'undefined') {
+        throw new Error('model is undefined')
+      }
+
+      while (root.type !== 'result') {
+        var childNode;
+
+        if (root.type === 'feature_number') {
+          var featureName = root.name;
+          var sampleVal = parseFloat(sample[featureName]);
+
+          if (sampleVal <= root.cut) {
+            childNode = root.values[1];
+          } else {
+            childNode = root.values[0];
+          }
+        } else {
+          // feature syn attribute
+          var feature = root.name;
+          var sampleValue = sample[this.features.indexOf(feature)];
+
+          // sub value , containing 2 childs
+          childNode = find(root.values, function(x) {
+            return x.name === sampleValue;
+          });
+        }
+
+        // non trained feature
+        if (typeof childNode === 'undefined') {
+          return 'unknown';
+        }
+        root = childNode.child;
+      }
+      return root.value;
+    },
+
+    restore: function(options) {
+      this.features = options.features || []
+      this.targets = options.targets || ''
+      this.target = options.target || ''
+      this.model = options.model || {}
     }
   };
 

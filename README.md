@@ -6,13 +6,13 @@
 
 [![NPM](https://nodei.co/npm/c4.5.png)](https://nodei.co/npm/c4.5)
 
-# Install
+## Install
 
 ```bash
 npm install c4.5
 ```
 
-# Usage
+## Usage
 
 `data.csv`
 
@@ -34,7 +34,7 @@ id,attr1,attr2,attr3,class
 14,C,96,False,CLASS1
 ```
 
-```javascript
+```js
 var fs = require('fs');
 var csv = require('csv');
 var C45 = require('c4.5');
@@ -83,12 +83,30 @@ fs.readFile('data.csv', function(err, data) {
 });
 ```
 
-# Test
+### Saving
 
+```js
+var c45 = C45();
+c45.train({...})
+fs.writeFileSync('state.json', c45.toJSON())
 ```
+
+### Restoring
+
+```js
+var c45 = C45();
+var state = require('state.json')
+c45.restore(state)
+var model = c45.getModel()
+console.log(model.classify(testData[0])) // 'CLASS1'
+```
+
+## Test
+
+```bash
 npm test
 ```
 
-# License
+## License
 
 MIT
