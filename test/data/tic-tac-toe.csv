@@ -486,7 +486,8 @@ o,b,b,b,b,o,x,x,x,positive
 b,x,x,o,x,o,x,o,b,positive
 b,x,x,o,x,o,x,b,o,positive
 b,x,x,o,x,o,o,x,b,positive
-b,x,x,o,x,o,b,x,o,positiveb,x,x,o,x,b,x,o,o,positive
+b,x,x,o,x,o,b,x,o,positive
+b,x,x,o,x,b,x,o,o,positive
 b,x,x,o,x,b,o,x,o,positive
 b,x,x,o,o,x,o,b,x,positive
 b,x,x,o,o,x,b,o,x,positive

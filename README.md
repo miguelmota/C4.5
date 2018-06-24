@@ -12,10 +12,6 @@
 npm install c4.5
 ```
 
-```bash
-bower install c4.5
-```
-
 # Usage
 
 `data.csv`

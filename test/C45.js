@@ -14,12 +14,16 @@ test('tennis', function (t) {
     function fileLoaded(err, data) {
       if (err) {
         console.error(err);
-      } else {
-        csv.parse(data, parseCSV);
+        return
       }
+      csv.parse(data, parseCSV);
     }
 
     function parseCSV(err, data) {
+      if (err) {
+        console.error(err)
+        return
+      }
       var headers = data[0];
       var features = headers.slice(1,-1);
       var target = headers[headers.length-1];
